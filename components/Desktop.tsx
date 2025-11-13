@@ -5,10 +5,11 @@ import PdfIcon from "./ui/icons/PdfIcon";
 import TextIcon from "./ui/icons/TextIcon";
 import FolderIcon from "./ui/icons/FolderIcon";
 import ImageIcon from "./ui/icons/ImageIcon";
-import ResumeWindow from "./Resume";
-import AboutMeWindow from "./AboutMe";
-import ProjectsWindow from "./projects/Projects";
-import ExperienceWindow from "./experience/Experience";
+import ResumeWindow from "./ui/windows/Resume";
+import AboutMeWindow from "./ui/windows/AboutMe";
+import ProjectsWindow from "./ui/windows/projects/Projects";
+import ExperienceWindow from "./ui/windows/experience/Experience";
+import Background from "./three/Background";
 
 type WindowState = {
     id: string;
@@ -49,10 +50,14 @@ export default function Desktop() {
     };
 
     return (
-        <div className="flex min-h-screen flex-col bg-[#1556a3] font-sans text-white">
-            <main className="flex flex-1 flex-col overflow-hidden bg-gradient-to-br from-[#1b63bc] via-[#0d4e92] to-[#0a2d57] p-6">
-                <div className="pointer-events-none bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.15),_transparent_60%)]" />
-                <div className="">
+        <div className="flex min-h-screen flex-col text-white">
+            <main className="relative flex flex-1">
+                <div
+                    className={`bg-radial-[at_5%_5%] to-(--bg) from-(--bg-light) absolute inset-0`}
+                >
+                    <Background/>
+                </div>
+                <div className="flex flex-1 flex-col p-6 z-5">
                     <PdfIcon
                         label="Resume.pdf"
                         handler={() => openWindow("Resume.pdf", ResumeWindow)}

@@ -64,7 +64,7 @@ export default function Scene() {
                     position={pointAndRelations.position}
                 >
                     <circleGeometry args={[0.025]} />
-                    <meshStandardMaterial color="white" />
+                    <meshStandardMaterial color="#0f0222" />
                 </mesh>
             );
         });

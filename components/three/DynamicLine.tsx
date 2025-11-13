@@ -12,7 +12,7 @@ export default function DynamicLine(props: DynamicLineProps) {
     const [line, setLine] = useState<THREE.Line | null>(null);
     const geometryRef = useRef(new THREE.BufferGeometry());
     const materialRef = useRef(new THREE.LineBasicMaterial({
-        color: "rgb(0, 225, 255)",
+        color: "#0f0222",
         transparent: true,
         opacity: 1
     }))

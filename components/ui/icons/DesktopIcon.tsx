@@ -11,11 +11,13 @@ export default function DesktopIcon(props: DesktopIconProps) {
         <button
             onClick={handler}
             type="button"
-            className="cursor-pointer flex w-32 flex-col items-center gap-2 rounded-lg bg-white/0 p-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red/70 hover:bg-red"
+            className="cursor-pointer group flex w-26 min-h-[130px] flex-col items-center gap-2 justify-between rounded-lg border border-transparent bg-transparent p-3 text-sm transition-colors hover:border-(--border)/20 hover:bg-(--bg-light)/30 hover:backdrop-blur-xs"
         >
-            {children}
-            <div className="text-center drop-shadow-md">
-                <span className="text-outline text-stone-50">
+            <div className="flex flex-1 items-center justify-center">
+                {children}
+            </div>
+            <div className="w-full text-center drop-shadow-md">
+                <span className="text-outline text-white">
                     {label}
                 </span>
             </div>

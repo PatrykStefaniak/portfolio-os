@@ -1,5 +1,6 @@
 "use client";
 
+import { X } from "lucide-react";
 import { ReactNode } from "react";
 
 type WindowProps = {
@@ -15,22 +16,24 @@ export default function Window({ title, isOpen, onClose, children, width = "600p
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div 
-                className="flex flex-col rounded-lg border border-white/30 bg-gradient-to-b from-[#1b63bc] to-[#0d4e92] shadow-2xl"
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-(--bg-dark)/40 backdrop-blur-xs">
+            <div
+                className="flex flex-col overflow-hidden rounded-lg border-t-stone-300 border border-(--border) bg-(--bg)/95 text-(--text) shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
                 style={{ width, height }}
             >
-                <div className="flex items-center rounded-t-lg justify-between border-b border-white/20 bg-gradient-to-r from-[#0d4e92] to-[#1b63bc] px-4 py-2">
-                    <h2 className="text-sm font-semibold text-white">{title}</h2>
+                <div className="flex items-center justify-between border-b border-(--border-muted) bg-(--bg-dark)/90 text-(--text)">
+                    <h2 className="mx-4 text-sm font-semibold uppercase tracking-[0.3em]">
+                        {title}
+                    </h2>
                     <button
                         onClick={onClose}
-                        className="flex h-6 w-6 items-center justify-center rounded hover:bg-red-500/80 transition-colors"
+                        className="cursor-pointer py-2 px-4 flex items-center justify-center text-(--text) transition hover:bg-(--danger)/80"
                         aria-label="Close window"
                     >
-                        <span className="text-white text-lg leading-none">×</span>
+                        <X/>
                     </button>
                 </div>
-                <div className="flex-1 overflow-auto p-4">
+                <div className="flex-1 overflow-auto bg-(--bg)/80 p-5 text-sm leading-relaxed text-(--text-muted)">
                     {children}
                 </div>
             </div>

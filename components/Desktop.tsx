@@ -10,6 +10,8 @@ import AboutMeWindow from "./ui/windows/AboutMe";
 import ProjectsWindow from "./ui/windows/projects/Projects";
 import ExperienceWindow from "./ui/windows/experience/Experience";
 import Background from "./three/Background";
+import TopToolbar from "./TopToolbar";
+import Footer from "./Footer";
 
 type WindowState = {
     id: string;
@@ -57,32 +59,7 @@ export default function Desktop() {
                 >
                     <Background/>
                 </div>
-                <div className="relative z-10 mx-auto mt-6 flex min-h-14 w-full max-w-3xl items-center justify-between rounded-full border-t border-white bg-(--bg)/20 px-6 py-2 shadow-lg backdrop-blur-xs">
-                    <span className="text-sm font-semibold uppercase tracking-[0.35em] text-(--text)">
-                        Patryk Norbert Stefaniak
-                    </span>
-                    <div className="flex items-center gap-4 text-sm">
-                        <a
-                            href="https://github.com/PatrykStefaniak"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-(--text) hover:text-white/80"
-                        >
-                            GitHub
-                        </a>
-                        <span aria-hidden="true" className="text-white/40">
-                            •
-                        </span>
-                        <a
-                            href="https://www.linkedin.com/in/patryk-stefaniak-a54b65203/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-(--text) hover:text-(--highlight)/80 hover:text-outline"
-                        >
-                            LinkedIn
-                        </a>
-                    </div>
-                </div>
+                <TopToolbar/>
                 <div className="w-60 z-5 mt-10 grid grid-cols-2 grid-rows-3 grid-rows-[120px_120px_120px]">
                     <FolderIcon
                         label="Projects"
@@ -106,15 +83,7 @@ export default function Desktop() {
                     />
                 </div>
             </main>
-            <footer className="flex h-14 items-center justify-between border-t border-white/20 bg-black/60 px-4">
-                <div className="w-full flex justify-between items-center text-xs">
-                    <div className="flex-1"/>
-                    <span className="flex-1 text-right">
-                        12:45 PM
-                        13/11/2025
-                    </span>
-                </div>
-            </footer>
+            <Footer/>
             {windows.map((window) => {
                 return (
                     <window.component

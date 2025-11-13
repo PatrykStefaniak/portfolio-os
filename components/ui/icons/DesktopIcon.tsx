@@ -15,7 +15,7 @@ export default function DesktopIcon(props: DesktopIconProps) {
         >
             {children}
             <div className="text-center drop-shadow-md">
-                <span className="text-outline text-stone-50 text-lg">
+                <span className="text-outline text-stone-50">
                     {label}
                 </span>
             </div>

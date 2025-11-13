@@ -51,21 +51,39 @@ export default function Desktop() {
 
     return (
         <div className="flex min-h-screen flex-col text-white">
-            <main className="relative flex flex-1">
+            <main className="relative flex flex-1 flex-col text-(--text)">
                 <div
-                    className={`bg-radial-[at_5%_5%] to-(--bg) from-(--bg-light) absolute inset-0`}
+                    className={`bg-radial-[at_5%_5%] to-(--bg-dark) from-(--bg-light) absolute inset-0`}
                 >
                     <Background/>
                 </div>
-                <div className="flex flex-1 flex-col p-6 z-5">
-                    <PdfIcon
-                        label="Resume.pdf"
-                        handler={() => openWindow("Resume.pdf", ResumeWindow)}
-                    />
-                    <TextIcon
-                        label="AboutMe.txt"
-                        handler={() => openWindow("AboutMe.txt", AboutMeWindow)}
-                    />
+                <div className="relative z-10 mx-auto mt-6 flex min-h-14 w-full max-w-3xl items-center justify-between rounded-full border-t border-white bg-(--bg)/20 px-6 py-2 shadow-lg backdrop-blur-xs">
+                    <span className="text-sm font-semibold uppercase tracking-[0.35em] text-(--text)">
+                        Patryk Norbert Stefaniak
+                    </span>
+                    <div className="flex items-center gap-4 text-sm">
+                        <a
+                            href="https://github.com/PatrykStefaniak"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-(--text) hover:text-white/80"
+                        >
+                            GitHub
+                        </a>
+                        <span aria-hidden="true" className="text-white/40">
+                            •
+                        </span>
+                        <a
+                            href="https://www.linkedin.com/in/patryk-stefaniak-a54b65203/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-(--text) hover:text-(--highlight)/80 hover:text-outline"
+                        >
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <div className="w-60 z-5 mt-10 grid grid-cols-2 grid-rows-3 grid-rows-[120px_120px_120px]">
                     <FolderIcon
                         label="Projects"
                         handler={() => openWindow("Projects", ProjectsWindow)}
@@ -77,6 +95,14 @@ export default function Desktop() {
                     <ImageIcon
                         label="Me!.png"
                         handler={() => {}}
+                    />
+                    <PdfIcon
+                        label="Resume.pdf"
+                        handler={() => openWindow("Resume.pdf", ResumeWindow)}
+                    />
+                    <TextIcon
+                        label="AboutMe.txt"
+                        handler={() => openWindow("AboutMe.txt", AboutMeWindow)}
                     />
                 </div>
             </main>

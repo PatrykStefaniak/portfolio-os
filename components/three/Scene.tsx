@@ -7,6 +7,12 @@ import DynamicLine from './DynamicLine';
 import { getPointsAndRelations } from '@/lib/utils';
 import useDebouncedViewportDimentions from '../hooks/useDebouncedViewportDimentions';
 
+const DOT_RADIUS = 0.025;
+const FOOTER_HEIGHT = 56;
+const SPRING_BACK_FORCE = -0.02;
+const MAX_PUSH_FORCE = 0.12;
+const REPEL_STRENGTH = 0.05;
+
 export default function Scene() {
     const viewportDimentions = useDebouncedViewportDimentions();
     const pointsAndRelations = useMemo(() => {
@@ -63,7 +69,7 @@ export default function Scene() {
                     }}
                     position={pointAndRelations.position}
                 >
-                    <circleGeometry args={[0.025]} />
+                    <circleGeometry args={[DOT_RADIUS]} />
                     <meshStandardMaterial color="#0f0222" />
                 </mesh>
             );
@@ -77,7 +83,7 @@ export default function Scene() {
 
         const pointer = mousePosRef.current;
         const x = (pointer.x / window.innerWidth) * 2 - 1;
-        const y = -(pointer.y / (window.innerHeight - 56)) * 2 + 1;
+        const y = -(pointer.y / (window.innerHeight - FOOTER_HEIGHT)) * 2 + 1;
 
         const mouseX = (x * viewport.width) / 2;
         const mouseY = (y * viewport.height) / 2;
@@ -102,7 +108,7 @@ export default function Scene() {
                     const distanceSqrt = Math.sqrt(distance);
                     const currentPos = currentPositionsRef.current[i];
                     const angle = Math.atan2(dy, dx);
-                    const strengh =  Math.min(0.05 * (1 - distanceSqrt) / (distanceSqrt * distanceSqrt), 0.12);
+                    const strengh =  Math.min(REPEL_STRENGTH * (1 - distanceSqrt) / (distanceSqrt * distanceSqrt), MAX_PUSH_FORCE);
 
                     position.x = currentPos[0] + Math.cos(angle) * strengh;
                     position.y = currentPos[1] + Math.sin(angle) * strengh;
@@ -113,8 +119,8 @@ export default function Scene() {
 
             const originalPos = pointsAndRelations[i].position;
 
-            position.x += (position.x - originalPos[0]) * -0.02;
-            position.y += (position.y - originalPos[1]) * -0.02;
+            position.x += (position.x - originalPos[0]) * SPRING_BACK_FORCE;
+            position.y += (position.y - originalPos[1]) * SPRING_BACK_FORCE;
 
             updatePos(i, position)
         });

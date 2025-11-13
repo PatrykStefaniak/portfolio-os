@@ -77,7 +77,7 @@ export default function Scene() {
 
         const pointer = mousePosRef.current;
         const x = (pointer.x / window.innerWidth) * 2 - 1;
-        const y = -(pointer.y / window.innerHeight) * 2 + 1;
+        const y = -(pointer.y / (window.innerHeight - 56)) * 2 + 1;
 
         const mouseX = (x * viewport.width) / 2;
         const mouseY = (y * viewport.height) / 2;

@@ -1,10 +1,14 @@
-import TextIcon from "./ui/TextIcon";
+import TextIcon from "./ui/icons/TextIcon";
 
-export default function AboutMe() {
+type AboutMeProps = {
+    handler: () => void;
+};
+
+export default function AboutMe({ handler }: AboutMeProps) {
     return (
         <TextIcon
             label="AboutMe.txt"
-            handler={() => {}}
+            handler={handler}
         />
     )
 }

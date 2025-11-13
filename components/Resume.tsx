@@ -1,10 +1,14 @@
-import PdfIcon from "./ui/PdfIcon";
+import PdfIcon from "./ui/icons/PdfIcon";
 
-export default function Resume() {
+type ResumeProps = {
+    handler: () => void;
+};
+
+export default function Resume({ handler }: ResumeProps) {
     return (
         <PdfIcon
             label="Resume.pdf"
-            handler={() => {}}
+            handler={handler}
         />
     )
 }

@@ -1,12 +1,24 @@
 "use client";
 
-import ImageIcon from "./ui/ImageIcon";
+import ImageIcon from "./ui/icons/ImageIcon";
 import Resume from "./Resume";
 import AboutMe from "./AboutMe";
 import Projects from "./projects/Projects";
 import Experience from "./experience/Experience";
+import { useState } from "react";
+
+type WindowState = {
+    id: string;
+    type: 'text' | 'folder' | 'pdf';
+    label: string;
+    isMinimized: boolean;
+    position: { x: number; y: number };
+    zIndex: number;
+};
 
 export default function Desktop() {
+    const [windows, setWindows] = useState<WindowState[]>([]);
+
     return (
         <div className="flex min-h-screen flex-col bg-[#1556a3] font-sans text-white">
             <main className="flex flex-1 flex-col overflow-hidden bg-gradient-to-br from-[#1b63bc] via-[#0d4e92] to-[#0a2d57] p-6">

@@ -1,10 +1,14 @@
-import FolderIcon from "../ui/FolderIcon";
+import FolderIcon from "../ui/icons/FolderIcon";
 
-export default function Experience() {
+type ExperienceProps = {
+    handler: () => void;
+};
+
+export default function Experience({ handler }: ExperienceProps) {
     return (
         <FolderIcon
             label="Experience"
-            handler={() => {}}
+            handler={handler}
         />
     )
 }

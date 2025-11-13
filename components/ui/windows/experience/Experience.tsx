@@ -10,8 +10,8 @@ export default function ExperienceWindow(props: WindowProps) {
             isOpen={isOpen}
             onClose={onClose}
         >
-            <div className="text-white">
-                <p>TODO</p>
+            <div className="text-(--text)">
+                <p>Welp, looks like this is under construction!</p>
             </div>
         </Window>
     );

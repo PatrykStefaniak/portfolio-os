@@ -33,7 +33,7 @@ export default function Window({ title, isOpen, onClose, children, width = "600p
                         <X/>
                     </button>
                 </div>
-                <div className="flex-1 overflow-auto bg-(--bg)/80 p-5 text-sm leading-relaxed text-(--text-muted)">
+                <div className="flex-1 overflow-auto bg-(--bg)/80 text-sm leading-relaxed text-(--text-muted)">
                     {children}
                 </div>
             </div>

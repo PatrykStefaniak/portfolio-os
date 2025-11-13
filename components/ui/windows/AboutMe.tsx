@@ -10,7 +10,7 @@ export default function AboutMeWindow(props: WindowProps) {
             isOpen={isOpen}
             onClose={onClose}
         >
-            <div className="text-(--text)">
+            <div className="text-(--text) p-5">
                 <p>
                     I am a Frontend Developer with 5 years of professional experience building enterprise web applications. Skilled in JavaScript, React, ExtJs, and modern frontend workflows.
                 </p>

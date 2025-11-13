@@ -10,8 +10,14 @@ export default function ResumeWindow(props: WindowProps) {
             isOpen={isOpen}
             onClose={onClose}
         >
-            <div className="text-white">
-                <p>TODO</p>
+            <div className="h-full">
+                <p className="h-full w-full">
+                    <embed
+                        className="h-full w-full"
+                        type='application/pdf'
+                        src={"/cv_PatrykStefaniak.pdf"}
+                    />
+                </p>
             </div>
         </Window>
     );

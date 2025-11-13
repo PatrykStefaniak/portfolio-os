@@ -1,12 +1,12 @@
 import { WindowProps } from "@/types/types";
-import Window from "../ui/windows/Window";
+import Window from "./Window";
 
-export default function ExperienceWindow(props: WindowProps) {
+export default function ResumeWindow(props: WindowProps) {
     const {isOpen, onClose} = props;
 
     return (
         <Window
-            title="Experience"
+            title="Resume.pdf"
             isOpen={isOpen}
             onClose={onClose}
         >
@@ -16,4 +16,3 @@ export default function ExperienceWindow(props: WindowProps) {
         </Window>
     );
 }
-

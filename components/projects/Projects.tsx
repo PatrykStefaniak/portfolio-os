@@ -1,5 +1,5 @@
 import { WindowProps } from "@/types/types";
-import Window from "../ui/Window";
+import Window from "../ui/windows/Window";
 
 export default function ProjectsWindow(props: WindowProps) {
     const {isOpen, onClose} = props;

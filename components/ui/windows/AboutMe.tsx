@@ -1,12 +1,12 @@
 import { WindowProps } from "@/types/types";
-import Window from "./ui/Window";
+import Window from "./Window";
 
-export default function ResumeWindow(props: WindowProps) {
+export default function AboutMeWindow(props: WindowProps) {
     const {isOpen, onClose} = props;
 
     return (
         <Window
-            title="Resume.pdf"
+            title="AboutMe.txt"
             isOpen={isOpen}
             onClose={onClose}
         >

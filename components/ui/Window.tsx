@@ -17,11 +17,10 @@ export default function Window({ title, isOpen, onClose, children, width = "600p
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
             <div 
-                className="relative flex flex-col rounded-lg border border-white/30 bg-gradient-to-b from-[#1b63bc] to-[#0d4e92] shadow-2xl"
+                className="flex flex-col rounded-lg border border-white/30 bg-gradient-to-b from-[#1b63bc] to-[#0d4e92] shadow-2xl"
                 style={{ width, height }}
             >
-                {/* Title Bar */}
-                <div className="flex items-center justify-between border-b border-white/20 bg-gradient-to-r from-[#0d4e92] to-[#1b63bc] px-4 py-2">
+                <div className="flex items-center rounded-t-lg justify-between border-b border-white/20 bg-gradient-to-r from-[#0d4e92] to-[#1b63bc] px-4 py-2">
                     <h2 className="text-sm font-semibold text-white">{title}</h2>
                     <button
                         onClick={onClose}
@@ -31,8 +30,6 @@ export default function Window({ title, isOpen, onClose, children, width = "600p
                         <span className="text-white text-lg leading-none">×</span>
                     </button>
                 </div>
-                
-                {/* Content */}
                 <div className="flex-1 overflow-auto p-4">
                     {children}
                 </div>

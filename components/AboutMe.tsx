@@ -1,14 +1,18 @@
-import TextIcon from "./ui/icons/TextIcon";
+import { WindowProps } from "@/types/types";
+import Window from "./ui/Window";
 
-type AboutMeProps = {
-    handler: () => void;
-};
+export default function AboutMeWindow(props: WindowProps) {
+    const {isOpen, onClose} = props;
 
-export default function AboutMe({ handler }: AboutMeProps) {
     return (
-        <TextIcon
-            label="AboutMe.txt"
-            handler={handler}
-        />
-    )
+        <Window
+            title="AboutMe.txt"
+            isOpen={isOpen}
+            onClose={onClose}
+        >
+            <div className="text-white">
+                <p>TODO</p>
+            </div>
+        </Window>
+    );
 }

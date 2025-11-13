@@ -1,14 +1,18 @@
-import PdfIcon from "./ui/icons/PdfIcon";
+import { WindowProps } from "@/types/types";
+import Window from "./ui/Window";
 
-type ResumeProps = {
-    handler: () => void;
-};
+export default function ResumeWindow(props: WindowProps) {
+    const {isOpen, onClose} = props;
 
-export default function Resume({ handler }: ResumeProps) {
     return (
-        <PdfIcon
-            label="Resume.pdf"
-            handler={handler}
-        />
-    )
+        <Window
+            title="Resume.pdf"
+            isOpen={isOpen}
+            onClose={onClose}
+        >
+            <div className="text-white">
+                <p>TODO</p>
+            </div>
+        </Window>
+    );
 }

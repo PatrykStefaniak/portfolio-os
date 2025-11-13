@@ -1,15 +1,19 @@
-import FolderIcon from "../ui/icons/FolderIcon";
+import { WindowProps } from "@/types/types";
+import Window from "../ui/Window";
 
-type ExperienceProps = {
-    handler: () => void;
-};
+export default function ExperienceWindow(props: WindowProps) {
+    const {isOpen, onClose} = props;
 
-export default function Experience({ handler }: ExperienceProps) {
     return (
-        <FolderIcon
-            label="Experience"
-            handler={handler}
-        />
-    )
+        <Window
+            title="Experience"
+            isOpen={isOpen}
+            onClose={onClose}
+        >
+            <div className="text-white">
+                <p>TODO</p>
+            </div>
+        </Window>
+    );
 }
 

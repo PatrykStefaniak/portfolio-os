@@ -1,15 +1,19 @@
-import FolderIcon from "../ui/icons/FolderIcon";
+import { WindowProps } from "@/types/types";
+import Window from "../ui/Window";
 
-type ProjectsProps = {
-    handler: () => void;
-};
+export default function ProjectsWindow(props: WindowProps) {
+    const {isOpen, onClose} = props;
 
-export default function Projects({ handler }: ProjectsProps) {
     return (
-        <FolderIcon
-            label="Projects"
-            handler={handler}
-        />
-    )
+        <Window
+            title="Projects"
+            isOpen={isOpen}
+            onClose={onClose}
+        >
+            <div className="text-white">
+                <p>TODO</p>
+            </div>
+        </Window>
+    );
 }
 

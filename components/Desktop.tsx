@@ -1,17 +1,10 @@
 "use client";
 
-import TextIcon from "./ui/TextIcon";
-import FolderIcon from "./ui/FolderIcon";
-import PdfIcon from "./ui/PdfIcon";
 import ImageIcon from "./ui/ImageIcon";
-
-const desktopEntries = [
-    { component: TextIcon, label: "AboutMe.txt" },
-    { component: PdfIcon, label: "Resume.pdf" },
-    { component: FolderIcon, label: "Projects" },
-    { component: FolderIcon, label: "Experience" },
-    { component: ImageIcon, label: "Me!.png" },
-];
+import Resume from "./Resume";
+import AboutMe from "./AboutMe";
+import Projects from "./projects/Projects";
+import Experience from "./experience/Experience";
 
 export default function Desktop() {
     return (
@@ -19,15 +12,15 @@ export default function Desktop() {
             <main className="flex flex-1 flex-col overflow-hidden bg-gradient-to-br from-[#1b63bc] via-[#0d4e92] to-[#0a2d57] p-6">
                 <div className="pointer-events-none bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.15),_transparent_60%)]" />
                 <div className="">
-                    {
-                        desktopEntries.map((entry) => (
-                            <entry.component
-                                key={entry.label}
-                                label={entry.label}
-                                handler={() => {}}
-                            />
-                        ))
-                    }
+                    <Resume/>
+                    <AboutMe/>
+                    <Projects/>
+                    <Experience/>
+                    <Resume/>
+                    <ImageIcon
+                        label="Me!.png"
+                        handler={() => {}}
+                    />
                 </div>
             </main>
             <footer className="flex h-14 items-center justify-between border-t border-white/20 bg-black/60 px-4">

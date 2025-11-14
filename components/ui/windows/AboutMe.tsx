@@ -16,7 +16,6 @@ export default function AboutMeWindow(props: WindowProps) {
                     I am a Frontend Developer with 5 years of professional experience building enterprise web applications. Skilled in JavaScript, React, ExtJs, and modern frontend workflows.
                 </p>
                 <p className="mt-3">
-                    Image of a handsome frontend developer
                     I&apos;ve implemented and optimized applications for customer-facing websites, led frontend development for complex multi-user VoIP dashboards, and developed and integrated Web CRM solutions with Salesforce among others.
                 </p>
                 <p className="mt-3">

@@ -1,31 +1,26 @@
 "use client";
 
+import { WindowProps as BaseWindowProps } from "@/types/types";
 import { X, Minus, Maximize2, Minimize2 } from "lucide-react";
 import { ReactNode, useState } from "react";
 
-type WindowProps = {
+interface WindowProps extends BaseWindowProps {
     title: string;
-    isOpen: boolean;
-    onClose: () => void;
-    onMinimize?: () => void;
-    onMaximize?: () => void;
     children: ReactNode;
     width?: string;
     height?: string;
 };
 
-export default function Window({ title, isOpen, onClose, onMinimize, onMaximize, children, width = "600px", height = "400px" }: WindowProps) {
+export default function Window(props: WindowProps) {
+    const { title, isOpen, onClose, onMinimize, children, width = "600px", height = "400px" } = props;
     const [isMaximized, setIsMaximized] = useState(false);
-
-    if (!isOpen) return null;
 
     const handleMaximize = () => {
         setIsMaximized(!isMaximized);
-        onMaximize?.();
     };
 
     return (
-        <div className="computer-font fixed inset-0 z-50 flex items-center justify-center bg-(--bg-dark)/40 backdrop-blur-xs">
+        <div className={`${!isOpen ? "hidden" : ""} computer-font fixed inset-0 z-50 flex items-center justify-center bg-(--bg-dark)/40 backdrop-blur-xs`}>
             <div
                 className={`flex flex-col overflow-hidden rounded-lg border-t-stone-300 border border-(--border) bg-(--bg)/95 text-(--text) shadow-[0_24px_48px_rgba(0,0,0,0.55)] transition-all ${
                     isMaximized ? "w-full h-full rounded-none" : ""

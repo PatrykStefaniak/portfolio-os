@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import PdfIcon from "./ui/icons/PdfIcon";
 import TextIcon from "./ui/icons/TextIcon";
 import FolderIcon from "./ui/icons/FolderIcon";
@@ -11,29 +11,23 @@ import ProjectsWindow from "./ui/windows/projects/Projects";
 import ExperienceWindow from "./ui/windows/experience/Experience";
 import Background from "./three/Background";
 import TopToolbar from "./TopToolbar";
-import Footer from "./Footer";
-import { WindowProps } from "@/types/types";
-
-type WindowState = {
-    id: string;
-    component: React.ComponentType<WindowProps>;
-    label: string;
-    isMinimized: boolean;
-    position: { x: number; y: number }; // might delete later
-    zIndex: number; // might delete later
-};
+import Footer from "./footer/Footer";
+import { WindowProps, WindowState } from "@/types/types";
 
 export default function Desktop() {
     const [windows, setWindows] = useState<WindowState[]>([]);
-    const nextZIndexRef = useRef(1000);
+
+    const getWindowById = (id: string) => {
+        return windows.find(w => w.id === id);
+    };
 
     const openWindow = (label: string, component: React.ComponentType<WindowProps>) => {
-        const existingWindow = windows.find(w => w.id === label);
+        const existingWindow = getWindowById(label);
 
         if (existingWindow) {
             return setWindows(prev => prev.map(win =>
                 win.id === label
-                    ? { ...win, isMinimized: false, zIndex: nextZIndexRef.current++ }
+                    ? { ...win, isMinimized: false }
                     : win
             ));
         }
@@ -42,9 +36,7 @@ export default function Desktop() {
             id: label,
             component,
             label,
-            isMinimized: false,
-            position: { x: 0, y: 0 },
-            zIndex: nextZIndexRef.current++
+            isMinimized: false
         }]);
     };
 
@@ -58,6 +50,17 @@ export default function Desktop() {
                 ? { ...w, isMinimized: true }
                 : w
         ));
+    };
+
+    const tabClickHandler = (win: WindowState) => {
+        setWindows(windowss => windowss.map(prev => (
+            prev.id !== win.id
+                ? prev
+                : {
+                    ...win,
+                    isMinimized: !prev.isMinimized
+                }
+        )));
     };
 
     return (
@@ -92,7 +95,10 @@ export default function Desktop() {
                     />
                 </div>
             </main>
-            <Footer/>
+            <Footer
+                windows={windows}
+                onTabClick={tabClickHandler}
+            />
             {windows.map((window) => (
                 <window.component
                     key={window.id}

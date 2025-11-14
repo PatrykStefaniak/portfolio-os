@@ -1,8 +1,14 @@
-export type WindowProps = {
+export interface WindowProps {
     isOpen: boolean;
     onClose: () => void;
-    onMinimize?: () => void;
-    onMaximize?: () => void;
+    onMinimize: () => void;
+};
+
+export type WindowState = {
+    id: string;
+    component: React.ComponentType<WindowProps>;
+    label: string;
+    isMinimized: boolean;
 };
 
 export type Point = {

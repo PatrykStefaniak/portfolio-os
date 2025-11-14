@@ -2,7 +2,7 @@ import { WindowProps } from "@/types/types";
 import Window from "./Window";
 
 export default function ResumeWindow(props: WindowProps) {
-    const {isOpen, onClose, onMinimize, onMaximize} = props;
+    const {isOpen, onClose, onMinimize} = props;
 
     return (
         <Window
@@ -10,7 +10,6 @@ export default function ResumeWindow(props: WindowProps) {
             isOpen={isOpen}
             onClose={onClose}
             onMinimize={onMinimize}
-            onMaximize={onMaximize}
         >
             <div className="h-full">
                 <p className="h-full w-full">

@@ -72,7 +72,7 @@ export default function Desktop() {
                     <Background/>
                 </div>
                 <TopToolbar/>
-                <div className="font-mono pl-10 w-150 z-5 mt-10 grid grid-flow-col grid-cols-5 grid-rows-3 grid-rows-[120px_120px_120px] gap-y-2">
+                <div className="font-mono pl-10 w-60 z-5 mt-10 grid grid-flow-col grid-cols-2 grid-rows-3 grid-rows-[120px_120px_120px] gap-y-2">
                     <FolderIcon
                         label="Projects"
                         handler={() => openWindow("Projects", ProjectsWindow)}

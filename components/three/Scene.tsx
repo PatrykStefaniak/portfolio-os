@@ -105,8 +105,13 @@ export default function Scene() {
                 const distance = dx * dx + dy * dy;
 
                 if (distance < 1) {
-                    const distanceSqrt = Math.sqrt(distance);
                     const currentPos = currentPositionsRef.current[i];
+
+                    if (!currentPos[0]) {
+                        return;
+                    }
+
+                    const distanceSqrt = Math.sqrt(distance);
                     const angle = Math.atan2(dy, dx);
                     const strengh =  Math.min(REPEL_STRENGTH * (1 - distanceSqrt) / (distanceSqrt * distanceSqrt), MAX_PUSH_FORCE);
 

@@ -76,9 +76,7 @@ export default function FooterRight() {
                                     setLanguage(lang);
                                     setIsLanguageMenuOpen(false);
                                 }}
-                                className={`block w-full px-4 py-2 text-left transition hover:bg-(--bg-dark) ${
-                                    language === lang ? "bg-(--bg) font-bold" : ""
-                                }`}
+                                className={`${language === lang ? "bg-(--bg) font-bold" : ""} cursor-pointer block w-full px-4 py-2 text-left transition hover:bg-(--bg-dark) `}
                             >
                                 {lang}
                             </button>

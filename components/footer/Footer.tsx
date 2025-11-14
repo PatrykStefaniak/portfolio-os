@@ -15,7 +15,7 @@ export default function Footer(props: FooterProps) {
     const [searchQuery, setSearchQuery] = useState("");
 
     return (
-        <footer className="flex h-14 items-center justify-between border-t border-(--border-muted) bg-(--bg) px-4">
+        <footer className="flex flex-col sm:flex-row h-24 sm:h-14 items-center justify-between border-t border-(--border-muted) bg-(--bg) px-4">
             <div className="flex items-center gap-3 text-(--text)">
                 <button
                     className="cursor-pointer flex items-center justify-center w-10 h-10 rounded transition hover:bg-(--bg-dark)"

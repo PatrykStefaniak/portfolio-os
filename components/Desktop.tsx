@@ -64,7 +64,7 @@ export default function Desktop() {
     };
 
     return (
-        <div className="flex min-h-screen flex-col text-white">
+        <div className="flex h-screen w-screen flex-col text-white">
             <main className="relative flex flex-1 flex-col text-(--text)">
                 <div
                     className={`bg-radial-[at_5%_5%] to-(--bg-dark) from-(--bg-light) absolute inset-0`}
@@ -72,7 +72,7 @@ export default function Desktop() {
                     <Background/>
                 </div>
                 <TopToolbar/>
-                <div className="computer-font pl-10 w-150 z-5 mt-10 grid grid-flow-col grid-cols-5 grid-rows-3 grid-rows-[120px_120px_120px] gap-y-2">
+                <div className="font-mono pl-10 w-150 z-5 mt-10 grid grid-flow-col grid-cols-5 grid-rows-3 grid-rows-[120px_120px_120px] gap-y-2">
                     <FolderIcon
                         label="Projects"
                         handler={() => openWindow("Projects", ProjectsWindow)}

@@ -20,7 +20,7 @@ export default function Window(props: WindowProps) {
     };
 
     return (
-        <div className={`${!isOpen ? "hidden" : ""} computer-font fixed inset-0 z-50 flex items-center justify-center bg-(--bg-dark)/40 backdrop-blur-xs`}>
+        <div className={`${!isOpen ? "hidden" : ""} font-mono fixed inset-0 z-50 flex items-center justify-center bg-(--bg-dark)/40 backdrop-blur-xs`}>
             <div
                 className={`flex flex-col overflow-hidden rounded-lg border-t-stone-300 border border-(--border) bg-(--bg)/95 text-(--text) shadow-[0_24px_48px_rgba(0,0,0,0.55)] transition-all ${
                     isMaximized ? "w-full h-full rounded-none" : ""

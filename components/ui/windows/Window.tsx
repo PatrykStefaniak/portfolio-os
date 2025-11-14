@@ -28,7 +28,7 @@ export default function Window(props: WindowProps) {
                     </h2>
                     <div className="flex items-center">
                         <button
-                            onClick={onMinimize || (() => {})}
+                            onClick={onMinimize}
                             className="cursor-pointer py-2 px-4 flex items-center justify-center text-(--text) transition hover:bg-(--bg-light)/20"
                             aria-label="Minimize window"
                         >
@@ -36,7 +36,7 @@ export default function Window(props: WindowProps) {
                         </button>
                         <button
                             onClick={handleMaximize}
-                            className="cursor-pointer py-2 px-4 flex items-center justify-center text-(--text) transition hover:bg-(--bg-light)/20"
+                            className="hidden sm:flex cursor-pointer py-2 px-4 items-center justify-center text-(--text) transition hover:bg-(--bg-light)/20"
                             aria-label={isMaximized ? "Restore window" : "Maximize window"}
                         >
                             {isMaximized ? <Minimize2 size={16} /> : <Maximize2 size={16} />}

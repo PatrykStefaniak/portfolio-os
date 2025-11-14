@@ -15,7 +15,7 @@ export default function Footer(props: FooterProps) {
     const [searchQuery, setSearchQuery] = useState("");
 
     return (
-        <footer className="flex flex-col sm:flex-row h-34 sm:h-14 items-center border-t border-(--border-muted) bg-(--bg) px-4 gap-5">
+        <footer className="flex flex-col sm:flex-row h-34 sm:h-14 items-center border-t border-(--border-muted) bg-(--bg) px-4 sm:gap-5">
             <div className="flex items-center gap-3 text-(--text)">
                 <button
                     className="cursor-pointer flex items-center justify-center w-10 h-10 rounded transition hover:bg-(--bg-dark)"
@@ -34,7 +34,7 @@ export default function Footer(props: FooterProps) {
                     />
                 </div>
             </div>
-            <div className="flex flex-1 overflow-x-scroll sm:overflow-x-auto gap-x-1 w-screen sm:w-auto">
+            <div className="flex sm:flex-1 overflow-x-scroll sm:overflow-x-auto gap-x-1 w-screen sm:w-auto">
                 {
                     windows.map((win) => {
                         return (

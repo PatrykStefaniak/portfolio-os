@@ -107,7 +107,7 @@ export default function Scene() {
                 if (distance < 1) {
                     const currentPos = currentPositionsRef.current[i];
 
-                    if (!currentPos[0]) {
+                    if (!currentPos) {
                         return;
                     }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Wifi, Volume2, BatteryCharging, Globe } from "lucide-react";
+import { Wifi, Volume2, BatteryCharging, Globe, Search, Grid2x2 } from "lucide-react";
 
 type Language = "ENG" | "ESP" | "POL";
 
@@ -26,6 +26,7 @@ const formatDate = (date: Date) => {
 export default function Footer() {
     const [language, setLanguage] = useState<Language>("ENG");
     const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
     const [time, setTime] = useState(new Date());
     const languageMenuRef = useRef<HTMLDivElement>(null);
 
@@ -54,8 +55,25 @@ export default function Footer() {
     }, [isLanguageMenuOpen]);
 
     return (
-        <footer className="flex h-14 items-center justify-between border-t border-(--border-muted) bg-(--bg) px-4 backdrop-blur-sm">
-            <div className="flex-1" />
+        <footer className="flex h-14 items-center justify-between border-t border-(--border-muted) bg-(--bg) px-4">
+            <div className="flex items-center gap-3">
+                <button
+                    className="cursor-pointer flex items-center justify-center w-10 h-10 rounded transition hover:bg-(--bg-dark)"
+                    aria-label="Windows menu"
+                >
+                    <Grid2x2 size={30} className="text-(--text-muted)" />
+                </button>
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded border border-(--border-muted) bg-(--bg-dark)/50 focus-within:border-(--border) focus-within:bg-(--bg-dark)">
+                    <Search size={16} className="text-(--text-muted)" />
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="bg-transparent border-none outline-none text-xs text-(--text) placeholder:text-(--text-muted) w-48"
+                    />
+                </div>
+            </div>
             <div className="flex items-center gap-4 text-xs text-(--text)">
                 <div className="relative" ref={languageMenuRef}>
                     <button
@@ -67,7 +85,7 @@ export default function Footer() {
                         <span className="font-medium">{language}</span>
                     </button>
                     {isLanguageMenuOpen && (
-                        <div className="absolute bottom-full right-0 mb-2 rounded border border-(--border-muted) bg-(--bg-light)/80 backdrop-blur-sm shadow-lg">
+                        <div className="absolute bottom-full right-0 mb-2 rounded border border-(--border-muted) bg-(--bg-light)/80 shadow-lg">
                             <div className="text-center py-2 font-bold border-b border-(--border)/60">
                                 Fluent in
                             </div>
@@ -78,7 +96,7 @@ export default function Footer() {
                                         setLanguage(lang);
                                         setIsLanguageMenuOpen(false);
                                     }}
-                                    className={`block w-full px-4 py-2 text-left text-xs transition hover:bg-(--bg-dark) ${
+                                    className={`block w-full px-4 py-2 text-left transition hover:bg-(--bg-dark) ${
                                         language === lang ? "bg-(--bg) font-bold" : ""
                                     }`}
                                 >

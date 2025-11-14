@@ -2,13 +2,15 @@ import { WindowProps } from "@/types/types";
 import Window from "./Window";
 
 export default function ResumeWindow(props: WindowProps) {
-    const {isOpen, onClose} = props;
+    const {isOpen, onClose, onMinimize, onMaximize} = props;
 
     return (
         <Window
             title="Resume.pdf"
             isOpen={isOpen}
             onClose={onClose}
+            onMinimize={onMinimize}
+            onMaximize={onMaximize}
         >
             <div className="h-full">
                 <p className="h-full w-full">

@@ -12,10 +12,11 @@ import ExperienceWindow from "./ui/windows/experience/Experience";
 import Background from "./three/Background";
 import TopToolbar from "./TopToolbar";
 import Footer from "./Footer";
+import { WindowProps } from "@/types/types";
 
 type WindowState = {
     id: string;
-    component: React.ComponentType<{ isOpen: boolean; onClose: () => void }>;
+    component: React.ComponentType<WindowProps>;
     label: string;
     isMinimized: boolean;
     position: { x: number; y: number }; // might delete later
@@ -26,7 +27,7 @@ export default function Desktop() {
     const [windows, setWindows] = useState<WindowState[]>([]);
     const nextZIndexRef = useRef(1000);
 
-    const openWindow = (label: string, component: React.ComponentType<{ isOpen: boolean; onClose: () => void }>) => {
+    const openWindow = (label: string, component: React.ComponentType<WindowProps>) => {
         const existingWindow = windows.find(w => w.id === label);
 
         if (existingWindow) {
@@ -49,6 +50,14 @@ export default function Desktop() {
 
     const closeWindow = (id: string) => {
         setWindows(prev => prev.filter(w => w.id !== id));
+    };
+
+    const minimizeWindow = (id: string) => {
+        setWindows(prev => prev.map(w =>
+            w.id === id
+                ? { ...w, isMinimized: true }
+                : w
+        ));
     };
 
     return (
@@ -84,15 +93,14 @@ export default function Desktop() {
                 </div>
             </main>
             <Footer/>
-            {windows.map((window) => {
-                return (
-                    <window.component
-                        key={window.id}
-                        isOpen={!window.isMinimized}
-                        onClose={() => closeWindow(window.id)}
-                    />
-                );
-            })}
+            {windows.map((window) => (
+                <window.component
+                    key={window.id}
+                    isOpen={!window.isMinimized}
+                    onClose={() => closeWindow(window.id)}
+                    onMinimize={() => minimizeWindow(window.id)}
+                />
+            ))}
         </div>
     );
 }

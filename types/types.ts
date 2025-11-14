@@ -1,7 +1,8 @@
 export type WindowProps = {
     isOpen: boolean;
     onClose: () => void;
-    onMinimise?: () => void;
+    onMinimize?: () => void;
+    onMaximize?: () => void;
 };
 
 export type Point = {

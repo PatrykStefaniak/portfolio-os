@@ -1,20 +1,9 @@
-import { WindowProps } from "@/types/types";
 import Window from "../Window";
 
-const PROJECTS = [
-    
-]
-
-export default function ProjectsWindow(props: WindowProps) {
-    const {isOpen, onClose, onMinimize} = props;
+export default function ProjectsWindow() {
 
     return (
-        <Window
-            title="Projects"
-            isOpen={isOpen}
-            onClose={onClose}
-            onMinimize={onMinimize}
-        >
+        <Window title="Projects">
             <div className="text-(--text)">
                 
             </div>

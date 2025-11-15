@@ -1,16 +1,8 @@
-import { WindowProps } from "@/types/types";
 import Window from "../Window";
 
-export default function ExperienceWindow(props: WindowProps) {
-    const {isOpen, onClose, onMinimize} = props;
-
+export default function ExperienceWindow() {
     return (
-        <Window
-            title="Experience"
-            isOpen={isOpen}
-            onClose={onClose}
-            onMinimize={onMinimize}
-        >
+        <Window title="Experience">
             <div className="text-(--text)">
                 <p>Welp, looks like this is under construction!</p>
             </div>

@@ -1,24 +1,26 @@
 "use client";
 
-import { WindowProps as BaseWindowProps } from "@/types/types";
+import { useWindowProvider } from "@/contexts/WindowProvider";
 import { X, Minus, Maximize2, Minimize2 } from "lucide-react";
 import { ReactNode, useState } from "react";
 
-interface WindowProps extends BaseWindowProps {
+interface WindowProps {
     title: string;
     children: ReactNode;
 };
 
 export default function Window(props: WindowProps) {
-    const { title, isOpen, onClose, onMinimize, children } = props;
+    const { title, children } = props;
+    const {getWindowById, closeWindow, minimizeWindow} = useWindowProvider();
     const [isMaximized, setIsMaximized] = useState(false);
+    const win = getWindowById(title);
 
-    const handleMaximize = () => {
+    const handleMaximizeClick = () => {
         setIsMaximized(!isMaximized);
     };
 
     return (
-        <div className={`${!isOpen ? "hidden" : ""} w-screen h-screen font-mono fixed inset-0 z-50 flex items-center justify-center bg-(--bg-dark)/40 backdrop-blur-xs`}>
+        <div className={`${win!.isMinimized ? "hidden" : ""} w-screen h-screen font-mono fixed inset-0 z-50 flex items-center justify-center bg-(--bg-dark)/40 backdrop-blur-xs`}>
             <div
                 className={`${isMaximized ? "" : "sm:w-[60vw] sm:h-[70vh] sm:rounded-lg"} w-screen h-screen flex flex-col border-t-stone-300 border border-(--border) bg-(--bg)/95 text-(--text) shadow-[0_24px_48px_rgba(0,0,0,0.55)] transition-all overflow-hidden`}
             >
@@ -28,21 +30,21 @@ export default function Window(props: WindowProps) {
                     </h2>
                     <div className="flex items-center">
                         <button
-                            onClick={onMinimize}
+                            onClick={() => minimizeWindow(title)}
                             className="cursor-pointer py-2 px-4 flex items-center justify-center text-(--text) transition hover:bg-(--bg-light)/20"
                             aria-label="Minimize window"
                         >
                             <Minus size={16} />
                         </button>
                         <button
-                            onClick={handleMaximize}
+                            onClick={handleMaximizeClick}
                             className="hidden sm:flex cursor-pointer py-2 px-4 items-center justify-center text-(--text) transition hover:bg-(--bg-light)/20"
                             aria-label={isMaximized ? "Restore window" : "Maximize window"}
                         >
                             {isMaximized ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
                         </button>
                         <button
-                            onClick={onClose}
+                            onClick={() => closeWindow(title)}
                             className="cursor-pointer py-2 px-4 flex items-center justify-center text-(--text) transition hover:bg-(--danger)/80"
                             aria-label="Close window"
                         >

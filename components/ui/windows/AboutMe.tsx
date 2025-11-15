@@ -1,16 +1,9 @@
-import { WindowProps } from "@/types/types";
 import Window from "./Window";
 
-export default function AboutMeWindow(props: WindowProps) {
-    const {isOpen, onClose, onMinimize} = props;
+export default function AboutMeWindow() {
 
     return (
-        <Window
-            title="AboutMe.txt"
-            isOpen={isOpen}
-            onClose={onClose}
-            onMinimize={onMinimize}
-        >
+        <Window title="AboutMe.txt">
             <div className="text-(--text) p-5">
                 <p>
                     I am a Frontend Developer with 5 years of professional experience building enterprise web applications. Skilled in JavaScript, React, ExtJs, and modern frontend workflows.

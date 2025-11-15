@@ -1,9 +1,8 @@
 import { useWindowProvider } from "@/contexts/WindowProvider";
-import { WindowProps } from "@/types/types";
 
 type DesktopIconProps = {
     label: string;
-    window: React.ComponentType<WindowProps>;
+    window: React.ComponentType;
     children: React.ReactNode;
 }
 

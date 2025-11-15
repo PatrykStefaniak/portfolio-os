@@ -6,7 +6,7 @@ import FooterRight from "./FooterRight";
 import { useWindowProvider } from "@/contexts/WindowProvider";
 
 export default function Footer() {
-    const {windows, toggleMaximizeWindow} = useWindowProvider();
+    const {windows, toggleOpenWindow} = useWindowProvider();
     const [searchQuery, setSearchQuery] = useState("");
 
     return (
@@ -35,7 +35,7 @@ export default function Footer() {
                         return (
                             <div
                                 key={win.label}
-                                onClick={() => toggleMaximizeWindow(win)}
+                                onClick={() => toggleOpenWindow(win.label)}
                                 className="text-(--text) cursor-pointer py-3 px-3 rounded-full sm:rounded-sm border border-(--border)/60 sm:border-(--border)/20 sm:hover:backdrop-blur-xs hover:bg-(--bg-light)/50 hover:border-(--border)/50"
                             >
                                 {win.label}

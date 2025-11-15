@@ -11,8 +11,11 @@ import ExperienceWindow from "./ui/windows/experience/Experience";
 import Background from "./three/Background";
 import TopToolbar from "./TopToolbar";
 import Footer from "./footer/Footer";
+import { useWindowProvider } from "@/contexts/WindowProvider";
 
 export default function Desktop() {
+    const {windows} = useWindowProvider();
+
     return (
         <div className="flex h-screen w-screen flex-col text-white">
             <main className="relative flex flex-1 flex-col text-(--text)">
@@ -46,6 +49,11 @@ export default function Desktop() {
                 </div>
             </main>
             <Footer/>
+            {windows.map((window) => (
+                <window.component
+                    key={window.id}
+                />
+            ))}
         </div>
     );
 }

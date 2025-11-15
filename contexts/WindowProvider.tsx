@@ -1,14 +1,15 @@
 "use client";
 
-import { WindowProps, WindowState } from "@/types/types";
+import { WindowState } from "@/types/types";
 import { createContext, useContext, useState } from "react";
 
 type WindowProviderProps = {
+    getWindowById: (id: string) => WindowState | undefined
     windows: WindowState[]
-    addWindow: (label: string, component: React.ComponentType<WindowProps>) => void
+    addWindow: (label: string, component: React.ComponentType) => void
     closeWindow: (id: string) => void
     minimizeWindow: (id: string) => void
-    toggleMaximizeWindow: (win: WindowState) => void
+    toggleOpenWindow: (id: string) => void
 }
 
 const WindowContext = createContext<WindowProviderProps | null>(null)
@@ -21,7 +22,7 @@ export default function WindowProvider(props: {children: React.ReactNode}) {
         return windows.find(w => w.id === id);
     };
 
-    const addWindow = (label: string, component: React.ComponentType<WindowProps>) => {
+    const addWindow = (label: string, component: React.ComponentType) => {
         const existingWindow = getWindowById(label);
 
         if (existingWindow) {
@@ -52,7 +53,13 @@ export default function WindowProvider(props: {children: React.ReactNode}) {
         ));
     };
 
-    const toggleMaximizeWindow = (win: WindowState) => {
+    const toggleOpenWindow = (id: string) => {
+        const win = getWindowById(id);
+
+        if (!win) {
+            return;
+        }
+
         setWindows(windowss => windowss.map(prev => (
             prev.id !== win.id
                 ? prev
@@ -66,22 +73,15 @@ export default function WindowProvider(props: {children: React.ReactNode}) {
     return (
         <WindowContext.Provider
             value={{
+                getWindowById,
                 windows,
                 addWindow,
                 closeWindow,
                 minimizeWindow,
-                toggleMaximizeWindow,
+                toggleOpenWindow: toggleOpenWindow,
             }}
         >
             {children}
-            {windows.map((window) => (
-                <window.component
-                    key={window.id}
-                    isOpen={!window.isMinimized}
-                    onClose={() => closeWindow(window.id)}
-                    onMinimize={() => minimizeWindow(window.id)}
-                />
-            ))}
         </WindowContext.Provider>
     );
 }

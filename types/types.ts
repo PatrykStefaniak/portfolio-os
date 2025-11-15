@@ -1,12 +1,6 @@
-export interface WindowProps {
-    isOpen: boolean;
-    onClose: () => void;
-    onMinimize: () => void;
-};
-
 export type WindowState = {
     id: string;
-    component: React.ComponentType<WindowProps>;
+    component: React.ComponentType;
     label: string;
     isMinimized: boolean;
 };
@@ -23,5 +17,5 @@ export type PointAndRelation = Point & {
 
 export interface DesktopIconProps {
     label: string;
-    window: React.ComponentType<WindowProps>;
+    window: React.ComponentType;
 }

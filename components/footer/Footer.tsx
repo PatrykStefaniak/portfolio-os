@@ -1,17 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Search, Grid2x2 } from "lucide-react";
 import FooterRight from "./FooterRight";
-import { WindowState } from "@/types/types";
+import { useWindowProvider } from "@/contexts/WindowProvider";
 
-type FooterProps = {
-    windows: WindowState[]
-    onTabClick: (tab: WindowState) => void
-}
-
-export default function Footer(props: FooterProps) {
-    const {windows, onTabClick} = props;
+export default function Footer() {
+    const {windows, toggleMaximizeWindow} = useWindowProvider();
     const [searchQuery, setSearchQuery] = useState("");
 
     return (
@@ -40,7 +35,7 @@ export default function Footer(props: FooterProps) {
                         return (
                             <div
                                 key={win.label}
-                                onClick={() => onTabClick(win)}
+                                onClick={() => toggleMaximizeWindow(win)}
                                 className="text-(--text) cursor-pointer py-3 px-3 rounded-full sm:rounded-sm border border-(--border)/60 sm:border-(--border)/20 sm:hover:backdrop-blur-xs hover:bg-(--bg-light)/50 hover:border-(--border)/50"
                             >
                                 {win.label}

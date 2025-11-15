@@ -1,6 +1,10 @@
 import { WindowProps } from "@/types/types";
 import Window from "../Window";
 
+const PROJECTS = [
+    
+]
+
 export default function ProjectsWindow(props: WindowProps) {
     const {isOpen, onClose, onMinimize} = props;
 
@@ -12,7 +16,7 @@ export default function ProjectsWindow(props: WindowProps) {
             onMinimize={onMinimize}
         >
             <div className="text-(--text)">
-                <p>Welp, looks like this is under construction!</p>
+                
             </div>
         </Window>
     );

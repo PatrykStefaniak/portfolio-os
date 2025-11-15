@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import PdfIcon from "./ui/icons/PdfIcon";
 import TextIcon from "./ui/icons/TextIcon";
 import FolderIcon from "./ui/icons/FolderIcon";
@@ -12,57 +11,8 @@ import ExperienceWindow from "./ui/windows/experience/Experience";
 import Background from "./three/Background";
 import TopToolbar from "./TopToolbar";
 import Footer from "./footer/Footer";
-import { WindowProps, WindowState } from "@/types/types";
 
 export default function Desktop() {
-    const [windows, setWindows] = useState<WindowState[]>([]);
-
-    const getWindowById = (id: string) => {
-        return windows.find(w => w.id === id);
-    };
-
-    const openWindow = (label: string, component: React.ComponentType<WindowProps>) => {
-        const existingWindow = getWindowById(label);
-
-        if (existingWindow) {
-            return setWindows(prev => prev.map(win =>
-                win.id === label
-                    ? { ...win, isMinimized: false }
-                    : win
-            ));
-        }
-
-        setWindows(prev => [...prev, {
-            id: label,
-            component,
-            label,
-            isMinimized: false
-        }]);
-    };
-
-    const closeWindow = (id: string) => {
-        setWindows(prev => prev.filter(w => w.id !== id));
-    };
-
-    const minimizeWindow = (id: string) => {
-        setWindows(prev => prev.map(w =>
-            w.id === id
-                ? { ...w, isMinimized: true }
-                : w
-        ));
-    };
-
-    const tabClickHandler = (win: WindowState) => {
-        setWindows(windowss => windowss.map(prev => (
-            prev.id !== win.id
-                ? prev
-                : {
-                    ...win,
-                    isMinimized: !prev.isMinimized
-                }
-        )));
-    };
-
     return (
         <div className="flex h-screen w-screen flex-col text-white">
             <main className="relative flex flex-1 flex-col text-(--text)">
@@ -75,38 +25,27 @@ export default function Desktop() {
                 <div className="font-mono pl-10 w-60 z-5 mt-10 grid grid-flow-col grid-cols-2 grid-rows-3 grid-rows-[120px_120px_120px] gap-y-2">
                     <FolderIcon
                         label="Projects"
-                        handler={() => openWindow("Projects", ProjectsWindow)}
+                        window={ProjectsWindow}
                     />
                     <FolderIcon
                         label="Experience"
-                        handler={() => openWindow("Experience", ExperienceWindow)}
+                        window={ExperienceWindow}
                     />
                     <ImageIcon
                         label="Me!.png"
-                        handler={() => {}}
+                        window={ProjectsWindow}
                     />
                     <PdfIcon
                         label="Resume.pdf"
-                        handler={() => openWindow("Resume.pdf", ResumeWindow)}
+                        window={ResumeWindow}
                     />
                     <TextIcon
                         label="AboutMe.txt"
-                        handler={() => openWindow("AboutMe.txt", AboutMeWindow)}
+                        window={AboutMeWindow}
                     />
                 </div>
             </main>
-            <Footer
-                windows={windows}
-                onTabClick={tabClickHandler}
-            />
-            {windows.map((window) => (
-                <window.component
-                    key={window.id}
-                    isOpen={!window.isMinimized}
-                    onClose={() => closeWindow(window.id)}
-                    onMinimize={() => minimizeWindow(window.id)}
-                />
-            ))}
+            <Footer/>
         </div>
     );
 }

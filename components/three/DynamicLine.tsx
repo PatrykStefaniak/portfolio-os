@@ -56,11 +56,5 @@ export default function DynamicLine(props: DynamicLineProps) {
         geometryRef.current.attributes.position.needsUpdate = true;
     });
 
-    return line ? (
-        <primitive
-            object={line}
-            transparent
-            opacity={.1}
-        />
-        ) : null;
+    return line ? <primitive object={line} /> : null;
 }

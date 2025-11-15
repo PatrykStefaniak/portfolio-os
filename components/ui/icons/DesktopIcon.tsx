@@ -1,15 +1,19 @@
+import { useWindowProvider } from "@/contexts/WindowProvider";
+import { WindowProps } from "@/types/types";
+
 type DesktopIconProps = {
     label: string;
-    handler: () => void;
+    window: React.ComponentType<WindowProps>;
     children: React.ReactNode;
 }
 
 export default function DesktopIcon(props: DesktopIconProps) {
-    const { label, handler, children } = props;
+    const { label, window, children } = props;
+    const {addWindow} = useWindowProvider();
 
     return (
         <button
-            onClick={handler}
+            onClick={() => addWindow(label, window)}
             type="button"
             className="cursor-pointer group flex w-26 min-h-[130px] flex-col items-center gap-2 justify-between rounded-lg border border-transparent bg-transparent p-3 text-sm transition-colors hover:border-(--border)/20 hover:bg-(--bg-light)/30 hover:backdrop-blur-xs"
         >

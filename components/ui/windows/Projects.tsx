@@ -1,10 +1,8 @@
 "use client";
 
-import { ReactNode } from "react";
 import { Briefcase } from "lucide-react";
 import { useWindowProvider } from "@/contexts/WindowProvider";
 import { FileExplorerItemData, FileExplorerContentMap } from "@/types/types";
-
 import Window from "./Window";
 import FileExplorerItem from "./ui/FileExplorerItem";
 import FileExplorerHeader from "./ui/FileExplorerHeader";

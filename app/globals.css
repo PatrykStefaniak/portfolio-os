@@ -39,6 +39,7 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .text-outline {
@@ -47,4 +48,13 @@ html, body {
 
 .desktop-icon-shadow {
   box-shadow: 0 6px 6px 0px rgba(0,0,0,0.3);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

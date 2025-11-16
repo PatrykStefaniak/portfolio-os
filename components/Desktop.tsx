@@ -16,8 +16,8 @@ export default function Desktop() {
     const {windows} = useWindowProvider();
 
     return (
-        <div className="flex h-screen w-screen flex-col text-white">
-            <main className="relative flex flex-1 flex-col text-(--text)">
+        <div className="flex h-screen w-screen flex-col text-white overflow-hidden">
+            <main className="relative flex flex-1 flex-col text-(--text) min-h-0 overflow-hidden">
                 <div
                     className={`bg-radial-[at_5%_5%] to-(--bg-dark) from-(--bg-light) absolute inset-0`}
                 >
@@ -45,9 +45,7 @@ export default function Desktop() {
             </main>
             <Footer/>
             {windows.map((window) => (
-                <window.component
-                    key={window.id}
-                />
+                <window.component key={window.id}/>
             ))}
         </div>
     );

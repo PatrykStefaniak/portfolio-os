@@ -1,3 +1,6 @@
+import { ReactNode } from "react";
+import { LucideIcon } from "lucide-react";
+
 export type WindowState = {
     id: string;
     component: React.ComponentType;
@@ -19,3 +22,12 @@ export interface DesktopIconProps {
     label: string;
     window: React.ComponentType;
 }
+
+export type FileExplorerItemData = {
+    name: string;
+    icon: LucideIcon;
+    size: string;
+    date: string;
+};
+
+export type FileExplorerContentMap = Record<string, ReactNode>;

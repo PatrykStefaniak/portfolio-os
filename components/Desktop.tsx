@@ -3,11 +3,10 @@
 import PdfIcon from "./ui/icons/PdfIcon";
 import TextIcon from "./ui/icons/TextIcon";
 import FolderIcon from "./ui/icons/FolderIcon";
-import ImageIcon from "./ui/icons/ImageIcon";
 import ResumeWindow from "./ui/windows/Resume";
 import AboutMeWindow from "./ui/windows/AboutMe";
-import ProjectsWindow from "./ui/windows/projects/Projects";
-import ExperienceWindow from "./ui/windows/experience/Experience";
+import ProjectsWindow from "./ui/windows/Projects";
+import ExperienceWindow from "./ui/windows/Experience";
 import Background from "./three/Background";
 import TopToolbar from "./TopToolbar";
 import Footer from "./footer/Footer";
@@ -25,7 +24,7 @@ export default function Desktop() {
                     <Background/>
                 </div>
                 <TopToolbar/>
-                <div className="font-mono pl-10 w-60 z-5 mt-10 grid grid-flow-col grid-cols-2 grid-rows-3 grid-rows-[120px_120px_120px] gap-y-2">
+                <div className="font-mono pl-10 w-60 z-5 mt-10 grid grid-flow-col grid-cols-2 grid-rows-2 grid-rows-[120px_120px] gap-y-2">
                     <FolderIcon
                         label="Projects"
                         window={ProjectsWindow}
@@ -33,10 +32,6 @@ export default function Desktop() {
                     <FolderIcon
                         label="Experience"
                         window={ExperienceWindow}
-                    />
-                    <ImageIcon
-                        label="Me!.png"
-                        window={ProjectsWindow}
                     />
                     <PdfIcon
                         label="Resume.pdf"

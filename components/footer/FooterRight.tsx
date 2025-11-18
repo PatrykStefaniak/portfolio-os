@@ -1,7 +1,19 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Wifi, Volume2, BatteryCharging, Globe } from "lucide-react";
+import { Wifi, Volume2, BatteryCharging, BatteryFull, BatteryMedium, BatteryLow, Globe } from "lucide-react";
+
+type BatteryInfo = {
+    level: number;
+    charging: boolean;
+};
+
+interface BatteryManager extends EventTarget {
+    charging: boolean;
+    level: number;
+    addEventListener(type: "levelchange" | "chargingchange", listener: () => void): void;
+    removeEventListener(type: "levelchange" | "chargingchange", listener: () => void): void;
+}
 
 type Language = "ENG" | "ESP" | "POL";
 
@@ -28,6 +40,7 @@ export default function FooterRight() {
     const [time, setTime] = useState(new Date());
     const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
     const languageMenuRef = useRef<HTMLDivElement>(null);
+    const [batteryInfo, setBatteryInfo] = useState<BatteryInfo | null>(null);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -36,6 +49,67 @@ export default function FooterRight() {
 
         return () => clearInterval(timer);
     }, []);
+
+    useEffect(() => {
+        let battery: BatteryManager | null = null;
+
+        const updateBattery = () => {
+            if (!battery) {
+                return;
+            }
+
+            setBatteryInfo({
+                level: battery.level,
+                charging: battery.charging,
+            });
+        };
+
+        async function initBattery() {
+            if (!("getBattery" in navigator)) {
+                return;
+            }
+
+            try {
+                const batteryManager = await (navigator.getBattery as () => Promise<BatteryManager>)();
+
+                battery = batteryManager;
+                updateBattery();
+
+                batteryManager.addEventListener("levelchange", updateBattery);
+                batteryManager.addEventListener("chargingchange", updateBattery);
+            } catch (error) {
+                console.error("Failed to read battery info", error);
+            }
+        }
+
+        initBattery();
+
+        return () => {
+            battery?.removeEventListener("levelchange", updateBattery);
+            battery?.removeEventListener("chargingchange", updateBattery);
+            battery = null;
+        };
+    }, []);
+
+    const renderBatteryIcon = () => {
+        if (!batteryInfo) {
+            return <BatteryFull size={20} className="text-(--text-muted)" />;
+        }
+
+        if (batteryInfo.charging) {
+            return <BatteryCharging size={20} className="text-(--success)" />;
+        }
+
+        if (batteryInfo.level >= 0.75) {
+            return <BatteryFull size={20} className="text-(--text-muted)" />;
+        }
+
+        if (batteryInfo.level <= 0.35) {
+            return <BatteryLow size={20} className="text-(--danger)" />;
+        }
+
+        return <BatteryMedium size={20} className="text-(--warning)" />;
+    };
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -90,8 +164,8 @@ export default function FooterRight() {
             <div className="flex items-center">
                 <Volume2 size={20} className="text-(--text-muted)" />
             </div>
-            <div className="flex items-center">
-                <BatteryCharging size={20} className="text-(--text-muted)" />
+            <div className="flex items-center" title={batteryInfo ? `${Math.round(batteryInfo.level * 100)}%` : undefined}>
+                {renderBatteryIcon()}
             </div>
             <div className="flex flex-col items-end font-medium">
                 <span suppressHydrationWarning>{formatTime(time)}</span>

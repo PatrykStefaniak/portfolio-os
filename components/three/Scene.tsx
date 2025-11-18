@@ -70,7 +70,7 @@ export default function Scene() {
                     position={pointAndRelations.position}
                 >
                     <circleGeometry args={[DOT_RADIUS]} />
-                    <meshStandardMaterial color="#0f0222" />
+                    <meshStandardMaterial color="#d1d1d1" />
                 </mesh>
             );
         });

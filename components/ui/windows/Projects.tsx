@@ -26,7 +26,7 @@ const PROJECT_CONTENT: FileExplorerContentMap = {
             <p className="mb-0 mt-5">Major milestones:</p>
             <ul className="list-disc pl-5 space-y-1">
                 <li>Added new AI sentiment analysis panel to the platform.</li>
-                <li>Built from scratch a responsive version of the platform's main dashboard.</li>
+                <li>Built from scratch a responsive version of the platform&apos;s main dashboard.</li>
                 <li>Optimized complex multi-user dashboards.</li>
                 <li>Delivered features like live call views, user activity panels, and object management screens.</li>
                 <li>Improved reception console UI rerendering to improve performance and workflow speed.</li>

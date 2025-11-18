@@ -14,7 +14,7 @@ export default function DynamicLine(props: DynamicLineProps) {
     const materialRef = useRef(new THREE.LineBasicMaterial({
         color: "#0f0222",
         transparent: true,
-        opacity: 1
+        opacity: .2
     }))
 
     useEffect(() => {
@@ -51,7 +51,7 @@ export default function DynamicLine(props: DynamicLineProps) {
         const dist = Math.max(dx, dy)
         const s = 1.2375 - 1.1875 * dist;
 
-        materialRef.current.opacity = Math.max(0, Math.min(s, 1));
+        materialRef.current.opacity = Math.max(0, Math.min(s, .2));
 
         geometryRef.current.attributes.position.needsUpdate = true;
     });

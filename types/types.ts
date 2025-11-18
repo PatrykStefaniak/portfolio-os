@@ -6,6 +6,7 @@ export type WindowState = {
     component: React.ComponentType;
     label: string;
     isMinimized: boolean;
+    zIndex: number;
 };
 
 export type Point = {

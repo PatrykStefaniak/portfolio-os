@@ -20,7 +20,10 @@ export default function Window(props: WindowProps) {
     };
 
     return (
-        <div className={`${win!.isMinimized ? "hidden" : ""} w-screen h-screen font-mono fixed inset-0 z-50 flex items-center justify-center bg-(--bg-dark)/40 backdrop-blur-xs`}>
+        <div
+            className={`${win!.isMinimized ? "hidden" : ""} w-screen h-screen font-mono fixed inset-0 flex items-center justify-center bg-(--bg-dark)/40 backdrop-blur-xs`}
+            style={{ zIndex: win?.zIndex ?? 50 }}
+        >
             <div
                 className={`${isMaximized ? "" : "sm:w-[60vw] sm:h-[70vh] sm:rounded-lg"} w-screen h-screen flex flex-col border border-(--border) border-t-0 bg-(--bg)/95 text-(--text) shadow-[0_24px_48px_rgba(0,0,0,0.55)] transition-all overflow-hidden`}
             >

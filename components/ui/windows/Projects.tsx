@@ -87,7 +87,7 @@ const PROJECT_CONTENT: FileExplorerContentMap = {
             </ul>
         </div>
     ),
-    "VoIP web plugin.txt": (
+    "VoIP web softphone.txt": (
         <div className="space-y-3">
             <b>Web Softphone - Lead Frontend Developer</b>
             <p>Web Softphone embeddable in customer websites, CRM tabs, and apps integrated with VoIPstudio platform.</p>

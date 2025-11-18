@@ -1,7 +1,7 @@
 "use client";
 
 import { WindowState } from "@/types/types";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 
 type WindowProviderProps = {
     getWindowById: (id: string) => WindowState | undefined
@@ -17,28 +17,41 @@ const WindowContext = createContext<WindowProviderProps | null>(null)
 export default function WindowProvider(props: {children: React.ReactNode}) {
     const { children } = props;
     const [windows, setWindows] = useState<WindowState[]>([]);
+    const nextZIndexRef = useRef(50);
 
     const getWindowById = (id: string) => {
         return windows.find(w => w.id === id);
     };
 
     const addWindow = (label: string, component: React.ComponentType) => {
-        const existingWindow = getWindowById(label);
+        setWindows((prev) => {
+            const existingWindow = getWindowById(label);
 
-        if (existingWindow) {
-            return setWindows(prev => prev.map(win =>
-                win.id === label
-                    ? { ...win, isMinimized: false }
-                    : win
-            ));
-        }
+            if (existingWindow) {
+                nextZIndexRef.current += 1;
+                const zIndex = nextZIndexRef.current;
 
-        setWindows(prev => [...prev, {
-            id: label,
-            component,
-            label,
-            isMinimized: false
-        }]);
+                return prev.map(win =>
+                    win.id === label
+                        ? { ...win, isMinimized: false, zIndex }
+                        : win
+                );
+            }
+
+            nextZIndexRef.current += 1;
+            const zIndex = nextZIndexRef.current;
+
+            return [
+                ...prev,
+                {
+                    id: label,
+                    component,
+                    label,
+                    isMinimized: false,
+                    zIndex,
+                },
+            ];
+        });
     };
 
     const closeWindow = (id: string) => {
@@ -54,20 +67,31 @@ export default function WindowProvider(props: {children: React.ReactNode}) {
     };
 
     const toggleOpenWindow = (id: string) => {
-        const win = getWindowById(id);
+        setWindows(prev => {
+            const existing = getWindowById(id);
 
-        if (!win) {
-            return;
-        }
+            if (!existing) {
+                return prev;
+            }
 
-        setWindows(windowss => windowss.map(prev => (
-            prev.id !== win.id
-                ? prev
-                : {
-                    ...win,
-                    isMinimized: !prev.isMinimized
-                }
-        )));
+            const isRestoring = existing.isMinimized;
+
+            let newZIndex = existing.zIndex;
+            if (isRestoring) {
+                nextZIndexRef.current += 1;
+                newZIndex = nextZIndexRef.current;
+            }
+
+            return prev.map(w =>
+                w.id !== id
+                    ? w
+                    : {
+                        ...w,
+                        isMinimized: !w.isMinimized,
+                        zIndex: newZIndex,
+                    }
+            );
+        });
     };
 
     return (

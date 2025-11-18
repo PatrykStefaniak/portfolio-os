@@ -94,8 +94,8 @@ export default function FooterRight() {
                 <BatteryCharging size={20} className="text-(--text-muted)" />
             </div>
             <div className="flex flex-col items-end font-medium">
-                <span>{formatTime(time)}</span>
-                <span className="text-(--text-muted)">{formatDate(time)}</span>
+                <span suppressHydrationWarning>{formatTime(time)}</span>
+                <span className="text-(--text-muted)" suppressHydrationWarning>{formatDate(time)}</span>
             </div>
         </div>
     )

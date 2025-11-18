@@ -21,67 +21,91 @@ const PROJECT_ITEMS: FileExplorerItemData[] = [
 const PROJECT_CONTENT: FileExplorerContentMap = {
     "Voipstudio.com.txt": (
         <div className="space-y-3">
-            <p>
-                Led the front-end for Voipstudio&apos;s main dashboard, focusing on multi-tenant routing, live call supervision, and bulk provisioning.
-            </p>
+            <b>VoIPStudio - Lead Frontend Developer</b>
+            <p>VoIPStudio is a SaaS communication platform used by thousands of business users.</p>
+            <p className="mb-0 mt-5">Major milestones:</p>
             <ul className="list-disc pl-5 space-y-1">
-                <li>Built reusable widgets for call queues, agents, and analytics.</li>
-                <li>Integrated WebRTC diagnostics and real-time monitoring tools.</li>
-                <li>Introduced theme tokens that later powered the entire design system.</li>
+                <li>Added new AI sentiment analysis panel to the platform.</li>
+                <li>Built from scratch a responsive version of the platform's main dashboard.</li>
+                <li>Optimized complex multi-user dashboards.</li>
+                <li>Delivered features like live call views, user activity panels, and object management screens.</li>
+                <li>Improved reception console UI rerendering to improve performance and workflow speed.</li>
+                <li>Created an entirely new Supervisor Dashboard and introduced a Supervisor user role with custom permissions.</li>
+                <li>Implemented integrations with external systems like Salesforce, HubSpot, Zapier, and others.</li>
+                <li>Delivered a full Dark Theme implementation across the platform.</li>
+                <li>Designed and built new features end-to-end, from UI architecture to implementation.</li>
             </ul>
-            <p className="text-(--text-muted)">Stack: React, WebRTC, Tailwind CSS, Zustand</p>
         </div>
     ),
     "VoIP Chrome Extension.txt": (
         <div className="space-y-3">
-            <p>Built a lightweight chrome extension enabling agents to make calls from any CRM tab.</p>
+            <b>VoIPstudio Chrome Extension - Lead Frontend Developer</b>
+            <p>Built a lightweight chrome extension enabling agents to make calls from any CRM tab thanks to click2call functionality.</p>
+            <p className="mb-0 mt-5">Major milestones:</p>
             <ul className="list-disc pl-5 space-y-1">
-                <li>Implemented context-aware actions and keyboard shortcuts.</li>
-                <li>Secured OAuth flow that reuses the main platform session.</li>
-                <li>Published and maintained the plug-in across multiple releases.</li>
+                <li>Led the full migration from Manifest V2 to Manifest V3, overcoming major limitations introduced for security (service worker lifecycle, background script restrictions, offscreen documents, etc.).</li>
+                <li>Implemented SMS feature, allowind sending and receiving SMS</li>
+                <li>Built a multiple simultaneous calls feature, and real-time call controls directly from the extension.</li>
+                <li>Built and improved click-to-call functionality that works on any website by detecting phone numbers and triggering calls through the VoIPstudio platform.</li>
             </ul>
         </div>
     ),
     "247livechat.com.txt": (
         <div className="space-y-3">
-            <p>Rebuilt the live chat platform UI with customer journey analytics and SLA tracking.</p>
+            <b>247livechat.com - Lead Frontend Developer</b>
+            <p>247LiveChat is a live chat software service for businesses that allows website visitors to communicate with support or sales representatives in real-time.</p>
+            <p className="mb-0 mt-5">Major milestones:</p>
             <ul className="list-disc pl-5 space-y-1">
-                <li>Designed data-rich widgets with collapsible panes for agents.</li>
-                <li>Exposed a design kit later reused by the marketing website.</li>
-                <li>Collaborated with backend to stream conversation events via SSE.</li>
+                <li>Led the frontend rebuild of a new live chat platform, replacing a heavily outdated legacy system.</li>
+                <li>Built interfaces to display real-time visitor tracking data collected from an embedded widget on customer websites.</li>
+                <li>Created richer chat profiles with detailed visitor info, and history.</li>
+                <li>Developed expanded website configuration options, giving customers more control over their chat widget, appearance, and behavior.</li>
+                <li>Implemented infinite scroll to handle thousands of visitors efficiently without killing performance.</li>
             </ul>
         </div>
     ),
     "Live chat widget.txt": (
         <div className="space-y-3">
-            <p>
-                Built an embeddable widget used by hundreds of customers, customizable via a JSON theme.
-            </p>
+            <b>Live Chat Widget - Lead Frontend Developer</b>
+            <p>Built an embeddable live-chat widget used by hundreds of customers, customizable via 247livechat dashboard.</p>
             <ul className="list-disc pl-5 space-y-1">
-                <li>Introduced lazy hydration and CDN delivery.</li>
-                <li>Added plug-ins for knowledge-base suggestions and canned replies.</li>
+                <li>Implemented real-time user activity tracking and status updates (online, idle, browsing behavior).</li>
+                <li>Enabled live chat sessions between visitors and operators.</li>
+                <li>Added full multi-language support and dynamic localization.</li>
+                <li>Designed various customization options: chat routing rules, customer-provided icons, widget behavior settings, proactive chat invitations, and more.</li>
             </ul>
         </div>
     ),
     "Call widget.txt": (
         <div className="space-y-3">
-            <p>Minimal widget that turns any landing page into a fully functional call-me module.</p>
-            <p className="text-(--text-muted)">Focus: accessibility, 30 KB gzip budget, <abbr title="Progressive Enhancement">PE</abbr>.</p>
+            <b>Call Me Back Widget - Lead Frontend Developer</b>
+            <p>Lightweight widget embedded in customer websites, allows users to provide a phone number which will be called back by an operator.</p>
+            <ul className="list-disc pl-5 space-y-1">
+            <li>Implemented real-time user activity tracking and status updates (online, idle, browsing behavior).</li>
+                <li>Added full multi-language support and dynamic localization.</li>
+                <li>Customizable with custom icons, calling strategy, and max call rate.</li>
+            </ul>
         </div>
     ),
     "VoIP web plugin.txt": (
         <div className="space-y-3">
-            <p>Customizable plugin that integrates Voipstudio soft phone into any SaaS.</p>
+            <b>Web Softphone - Lead Frontend Developer</b>
+            <p>Web Softphone embeddable in customer websites, CRM tabs, and apps integrated with VoIPstudio platform.</p>
             <ul className="list-disc pl-5 space-y-1">
-                <li>Shipped a sandbox environment so partners can preview configs.</li>
-                <li>Built exhaustive documentation and code samples generated from MDX.</li>
+                <li>Built a fully functional web softphone, allowing users to make and receive calls directly from their browser.</li>
+                <li>Implemented handling of webhooks defined in the VoIPstudio platform and sent by customer systems, allowing for custom behaviour as per customers needs.</li>
+                <li>Fully embedded into the salesforce reception console, with OpenCTI API, allowing automatic salesforce object creation and management.</li>
             </ul>
         </div>
     ),
     "WeatherNalsi.txt": (
         <div className="space-y-3">
-            <p>Personal experiment mixing weather APIs with generative art.</p>
-            <p className="text-(--text-muted)">Stack: Next.js App Router, Three.js, WebGL shaders.</p>
+            <b>WeatherNalsi - Personal Project</b>
+            <p>Small personal weather app project. Goal was to familiarize myself with Next.js</p>
+            <ul className="list-disc pl-5 space-y-1">
+                <li>Implemented search by city and country name, and coordinates.</li>
+                <li>Implemented multiple server-side components.</li>
+            </ul>
         </div>
     ),
 };

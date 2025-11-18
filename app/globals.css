@@ -7,6 +7,7 @@
   --text: oklch(0.15 0.07 298);
   --text-muted: oklch(0.4 0.07 298);
   --highlight: oklch(1 0.07 298);
+  --border-light: oklch(0.5 0.07 298);
   --border: oklch(0.6 0.07 298);
   --border-muted: oklch(0.7 0.07 298);
   --primary: oklch(0.4 0.1 298);
@@ -24,6 +25,7 @@ body.dark {
   --text: oklch(0.96 0.07 298);
   --text-muted: oklch(0.76 0.07 298);
   --highlight: oklch(0.5 0.07 298);
+  --border-light: oklch(0.3 0.07 298);
   --border: oklch(0.4 0.07 298);
   --border-muted: oklch(0.3 0.07 298);
   --primary: oklch(0.76 0.1 298);
@@ -57,4 +59,14 @@ html, body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+.window-border-top {
+    border-top: 1px solid;
+    border-image: linear-gradient(
+        to right,
+        #8577a5 10%,
+        var(--highlight) 50%,
+        #8577a5 90%
+    ) 1 0 0 0;
 }

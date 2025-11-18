@@ -44,7 +44,7 @@ const PROJECT_CONTENT: FileExplorerContentMap = {
             <p className="mb-0 mt-5">Major milestones:</p>
             <ul className="list-disc pl-5 space-y-1">
                 <li>Led the full migration from Manifest V2 to Manifest V3, overcoming major limitations introduced for security (service worker lifecycle, background script restrictions, offscreen documents, etc.).</li>
-                <li>Implemented SMS feature, allowind sending and receiving SMS</li>
+                <li>Implemented SMS feature, allowing sending and receiving SMS</li>
                 <li>Built a multiple simultaneous calls feature, and real-time call controls directly from the extension.</li>
                 <li>Built and improved click-to-call functionality that works on any website by detecting phone numbers and triggering calls through the VoIPstudio platform.</li>
             </ul>
@@ -93,7 +93,7 @@ const PROJECT_CONTENT: FileExplorerContentMap = {
             <p>Web Softphone embeddable in customer websites, CRM tabs, and apps integrated with VoIPstudio platform.</p>
             <ul className="list-disc pl-5 space-y-1">
                 <li>Built a fully functional web softphone, allowing users to make and receive calls directly from their browser.</li>
-                <li>Implemented handling of webhooks defined in the VoIPstudio platform and sent by customer systems, allowing for custom behaviour as per customers needs.</li>
+                <li>Implemented handling of webhooks defined in the VoIPstudio platform and sent by customer systems, allowing for custom behavior as per customer needs.</li>
                 <li>Fully embedded into the salesforce reception console, with OpenCTI API, allowing automatic salesforce object creation and management.</li>
             </ul>
         </div>
